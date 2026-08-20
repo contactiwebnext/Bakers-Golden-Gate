@@ -1,0 +1,6 @@
+{
+  "name": "Bakers Golden Gate",
+  "description": "A compassionate, dignified, and modern website for Bakers Golden Gate mortuary serving families in Parkersburg, West Virginia and the Mid-Ohio Valley.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
