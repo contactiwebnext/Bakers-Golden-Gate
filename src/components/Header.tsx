@@ -1,23 +1,15 @@
 import React, { useState } from 'react';
-import { Phone, Mail, Clock, MapPin, Menu, X, Heart, Calendar, Eye, ZoomIn, ZoomOut, Sparkles } from 'lucide-react';
+import { Phone, Mail, Clock, MapPin, Menu, X, Heart, Calendar, Sparkles } from 'lucide-react';
 import { BUSINESS_INFO } from '../data/mockData';
 
 interface HeaderProps {
   onOpenImmediateNeed: () => void;
   onOpenAppointment: () => void;
-  fontSize: 'normal' | 'large' | 'larger';
-  setFontSize: (size: 'normal' | 'large' | 'larger') => void;
-  highContrast: boolean;
-  setHighContrast: (val: boolean) => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   onOpenImmediateNeed,
   onOpenAppointment,
-  fontSize,
-  setFontSize,
-  highContrast,
-  setHighContrast,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -57,58 +49,8 @@ export const Header: React.FC<HeaderProps> = ({
             </span>
           </div>
 
-          {/* Right: Accessibility Controls & Immediate Need Quick Trigger */}
+          {/* Right: Immediate Need Quick Trigger */}
           <div className="flex items-center gap-3">
-            {/* Font Resizing for Seniors */}
-            <div className="hidden md:flex items-center gap-1 bg-[#141A21] px-2 py-0.5 rounded-sm border border-[#FFFFFF15] text-[#F8F5F0]/70">
-              <span className="text-[11px] text-[#F8F5F0]/50 mr-1">Text:</span>
-              <button
-                id="font-size-normal"
-                onClick={() => setFontSize('normal')}
-                className={`px-1.5 py-0.5 rounded text-xs font-medium transition-colors ${
-                  fontSize === 'normal' ? 'bg-[#C5A059] text-[#0F1419] font-bold' : 'hover:text-white'
-                }`}
-                title="Normal text size"
-              >
-                A
-              </button>
-              <button
-                id="font-size-large"
-                onClick={() => setFontSize('large')}
-                className={`px-1.5 py-0.5 rounded text-sm font-semibold transition-colors ${
-                  fontSize === 'large' ? 'bg-[#C5A059] text-[#0F1419] font-bold' : 'hover:text-white'
-                }`}
-                title="Large text size"
-              >
-                A+
-              </button>
-              <button
-                id="font-size-larger"
-                onClick={() => setFontSize('larger')}
-                className={`px-1.5 py-0.5 rounded text-base font-bold transition-colors ${
-                  fontSize === 'larger' ? 'bg-[#C5A059] text-[#0F1419] font-bold' : 'hover:text-white'
-                }`}
-                title="Extra large text size"
-              >
-                A++
-              </button>
-            </div>
-
-            {/* High Contrast Toggle */}
-            <button
-              id="high-contrast-toggle"
-              onClick={() => setHighContrast(!highContrast)}
-              className={`text-xs px-2 py-0.5 rounded border transition-colors flex items-center gap-1 ${
-                highContrast
-                  ? 'bg-[#C5A059] text-black border-[#C5A059] font-bold'
-                  : 'bg-[#141A21] text-[#F8F5F0]/70 border-[#FFFFFF15] hover:text-white'
-              }`}
-              title="Toggle high contrast mode"
-            >
-              <Eye className="w-3 h-3" />
-              <span className="hidden sm:inline">{highContrast ? 'Standard Mode' : 'High Contrast'}</span>
-            </button>
-
             {/* Immediate Need Button */}
             <button
               id="header-immediate-need-btn"
@@ -126,17 +68,9 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo & Brand Wordmark */}
-          <a id="brand-logo-link" href="#home" className="flex items-center gap-3 group">
+          <a id="brand-logo-link" href="#home" className="flex items-center gap-3 group" aria-label="Bakers Golden Gate Home">
             <div className="w-11 h-11 rounded-full bg-[#1A222C] border-2 border-[#C5A059] flex items-center justify-center text-[#C5A059] shadow-sm group-hover:border-[#D4B16A] transition-colors">
               <span className="font-serif-cormorant text-xl font-bold tracking-tight">BG</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl sm:text-2xl font-serif tracking-[0.15em] uppercase text-[#C5A059] leading-tight">
-                Bakers Golden Gate
-              </span>
-              <span className="text-[10px] tracking-[0.25em] text-[#F8F5F0]/60 uppercase font-medium mt-0.5">
-                Funeral & Memorial Services • Parkersburg, WV
-              </span>
             </div>
           </a>
 

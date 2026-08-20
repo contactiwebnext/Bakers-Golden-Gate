@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -24,42 +24,19 @@ export default function App() {
   const [appointmentInitialService, setAppointmentInitialService] = useState<string | undefined>(undefined);
   const [privacyOpen, setPrivacyOpen] = useState(false);
 
-  // Accessibility state
-  const [fontSize, setFontSize] = useState<'normal' | 'large' | 'larger'>('normal');
-  const [highContrast, setHighContrast] = useState(false);
-
-  useEffect(() => {
-    if (highContrast) {
-      document.body.classList.add('high-contrast');
-    } else {
-      document.body.classList.remove('high-contrast');
-    }
-  }, [highContrast]);
-
   const handleOpenAppointment = (serviceTitle?: string) => {
     setAppointmentInitialService(serviceTitle);
     setAppointmentOpen(true);
   };
 
-  const fontSizeClass =
-    fontSize === 'larger'
-      ? 'text-lg [&_p]:text-lg [&_h1]:text-6xl [&_h2]:text-5xl [&_h3]:text-3xl'
-      : fontSize === 'large'
-      ? 'text-base [&_p]:text-base [&_h1]:text-5xl [&_h2]:text-4xl [&_h3]:text-2xl'
-      : '';
-
   return (
     <div
-      className={`min-h-screen bg-[#0F1419] text-[#F8F5F0] flex flex-col selection:bg-[#C5A059]/30 selection:text-[#F8F5F0] ${fontSizeClass}`}
+      className="min-h-screen bg-[#0F1419] text-[#F8F5F0] flex flex-col selection:bg-[#C5A059]/30 selection:text-[#F8F5F0]"
     >
       {/* Sticky Top Header */}
       <Header
         onOpenImmediateNeed={() => setImmediateNeedOpen(true)}
         onOpenAppointment={() => handleOpenAppointment()}
-        fontSize={fontSize}
-        setFontSize={setFontSize}
-        highContrast={highContrast}
-        setHighContrast={setHighContrast}
       />
 
       {/* Main Sections */}
