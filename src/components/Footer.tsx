@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Heart, Shield, ArrowUp } from 'lucide-react';
+import { Phone, Mail, MapPin, Heart, ShieldCheck, ArrowUp, Truck, Shield } from 'lucide-react';
 import { BUSINESS_INFO } from '../data/mockData';
 
 interface FooterProps {
@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({
 }) => {
   return (
     <footer className="bg-[#0F1419] text-[#F8F5F0]/70 border-t border-[#FFFFFF10]">
-      {/* 24/7 Immediate Help Banner */}
+      {/* 24/7 Immediate Help & Dispatch Banner */}
       <div className="bg-[#141A21] py-6 px-4 border-b border-[#FFFFFF10]">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-3">
@@ -23,8 +23,8 @@ export const Footer: React.FC<FooterProps> = ({
               <Heart className="w-5 h-5 fill-red-400" />
             </div>
             <div>
-              <p className="text-[#F8F5F0] font-semibold text-sm">Need immediate assistance in Parkersburg?</p>
-              <p className="text-xs text-[#F8F5F0]/60">Directors are available 24 hours a day, 7 days a week.</p>
+              <p className="text-[#F8F5F0] font-semibold text-sm">Need immediate mortuary transport dispatch?</p>
+              <p className="text-xs text-[#F8F5F0]/60">Our on-duty transport coordinators are available 24/7/365.</p>
             </div>
           </div>
 
@@ -35,7 +35,7 @@ export const Footer: React.FC<FooterProps> = ({
               className="px-5 py-2.5 rounded-sm bg-[#C5A059] hover:bg-[#D4B16A] text-[#0F1419] font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-2 shadow-xs"
             >
               <Phone className="w-4 h-4 text-[#0F1419]" />
-              <span>Call (740) 691-1488</span>
+              <span>Call 740 – 691 – 1488</span>
             </a>
             <button
               onClick={onOpenImmediateNeed}
@@ -56,24 +56,33 @@ export const Footer: React.FC<FooterProps> = ({
               <div className="w-10 h-10 rounded-full bg-[#141A21] border border-[#C5A059] flex items-center justify-center text-[#C5A059]">
                 <span className="font-serif-cormorant text-lg font-bold">BG</span>
               </div>
-              <span className="font-serif-cormorant text-2xl font-bold text-[#F8F5F0] tracking-tight">
-                Bakers Golden Gate
-              </span>
+              <div className="flex flex-col">
+                <span className="font-serif-cormorant text-xl font-bold text-[#F8F5F0] tracking-tight">
+                  Baker’s Golden Gate
+                </span>
+                <span className="text-[10px] text-[#C5A059] uppercase tracking-widest font-semibold">
+                  Mortuary Transportation LLC
+                </span>
+              </div>
             </div>
 
-            <p className="text-sm text-[#F8F5F0]/60 leading-relaxed max-w-sm">
-              Providing compassionate care, funeral services, memorial gatherings, cremation, and burial assistance for families in Parkersburg, West Virginia and the Mid-Ohio Valley.
+            <p className="text-sm text-[#F8F5F0]/65 leading-relaxed max-w-sm">
+              Providing reliable, professional, and compassionate mortuary transportation services for funeral homes, medical examiners, mortuary providers, and private families. Founded by Thomas Baker with over 30 years of experience.
             </p>
 
-            <div className="pt-2 text-xs text-[#F8F5F0]/60 space-y-1.5">
+            <div className="pt-2 text-xs text-[#F8F5F0]/70 space-y-2">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <span>State License: <strong className="text-[#C5A059]">WV 2455-5536</strong></span>
+              </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <span>Parkersburg, WV (Mid-Ohio Valley)</span>
+                <span>2607 Bartlett Street, Parkersburg, WV 26104</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <a href={`tel:${BUSINESS_INFO.phoneClean}`} className="hover:text-[#C5A059] transition-colors">
-                  740-691-1488
+                <a href={`tel:${BUSINESS_INFO.phoneClean}`} className="hover:text-[#C5A059] transition-colors font-medium">
+                  740 – 691 – 1488
                 </a>
               </div>
               <div className="flex items-center gap-2">
@@ -88,7 +97,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Quick Links Column */}
           <div className="lg:col-span-4 space-y-3">
             <h4 className="font-serif-cormorant text-lg font-bold text-[#F8F5F0] tracking-wide">
-              Quick Navigation
+              Services & Navigation
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm text-[#F8F5F0]/60">
               <li>
@@ -98,32 +107,32 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li>
                 <a href="#about" className="hover:text-[#C5A059] transition-colors">
-                  About Bakers Golden Gate
+                  About & 30+ Year Story
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-[#C5A059] transition-colors">
-                  Mortuary & Memorial Services
+                  9 Specialized Transport Services
                 </a>
               </li>
               <li>
-                <a href="#obituaries" className="hover:text-[#C5A059] transition-colors">
-                  Current Obituaries & Tributes
+                <a href="#pricing" className="hover:text-[#C5A059] transition-colors font-medium text-[#C5A059]">
+                  Official Price List & Mileage Calculator
                 </a>
               </li>
               <li>
                 <a href="#pre-planning" className="hover:text-[#C5A059] transition-colors">
-                  Advance Pre-Planning
+                  Dispatch & Transfer Coordination
                 </a>
               </li>
               <li>
                 <a href="#grief-support" className="hover:text-[#C5A059] transition-colors">
-                  Grief Resources & Guides
+                  Grief Care & Guidance
                 </a>
               </li>
               <li>
                 <a href="#contact" className="hover:text-[#C5A059] transition-colors">
-                  Contact & Location
+                  Contact & Dispatch Office
                 </a>
               </li>
             </ul>
@@ -132,30 +141,30 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Consultation & Support Column */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="font-serif-cormorant text-lg font-bold text-[#F8F5F0] tracking-wide">
-              Family Assistance
+              Dispatch & Inquiries
             </h4>
             <p className="text-xs text-[#F8F5F0]/60 leading-relaxed">
-              Schedule an in-person or phone consultation with a licensed funeral professional.
+              Serving funeral directors, healthcare facilities, coroners, and private families throughout West Virginia and Ohio.
             </p>
             <button
               id="footer-book-consultation"
               onClick={onOpenAppointment}
-              className="w-full py-2.5 px-4 bg-[#C5A880] hover:bg-[#D4B16A] text-[#0F1419] font-bold text-xs uppercase tracking-wider rounded-sm transition-colors shadow-xs"
+              className="w-full py-2.5 px-4 bg-[#C5A059] hover:bg-[#D4B16A] text-[#0F1419] font-bold text-xs uppercase tracking-wider rounded-sm transition-colors shadow-xs"
             >
-              Book Consultation
+              Request Dispatch Form
             </button>
             <button
               onClick={onOpenPrivacy}
               className="text-xs text-[#F8F5F0]/60 hover:text-[#C5A059] underline underline-offset-2 block pt-2"
             >
-              Privacy Policy & Confidentiality
+              Privacy Policy & HIPAA Confidentiality
             </button>
           </div>
         </div>
 
         {/* Bottom Bar with Developer Attribution */}
-        <div className="mt-12 pt-8 border-t border-[#FFFFFF10] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#F8F5F0]/50">
-          <p>© {new Date().getFullYear()} Bakers Golden Gate. All rights reserved. Parkersburg, WV.</p>
+        <div className="mt-12 pt-8 border-t border-[#FFFFFF10] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#F8F5F0]/50 text-center sm:text-left">
+          <p>© {new Date().getFullYear()} Baker’s Golden Gate Mortuary Transportation LLC. All rights reserved. WV License 2455-5536 • 2607 Bartlett St, Parkersburg, WV 26104.</p>
 
           {/* Centered / aligned developer attribution as requested in the requirements */}
           <div className="text-center sm:text-right">
@@ -165,7 +174,7 @@ export const Footer: React.FC<FooterProps> = ({
                 href="https://iwebnext.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#C5A059] hover:text-[#D4B16A] font-medium underline underline-offset-4 transition-colors"
+                className="text-[#C5A059] hover:text-[#D4B16A] font-semibold underline underline-offset-4 transition-colors"
               >
                 iWebNext
               </a>
@@ -176,3 +185,4 @@ export const Footer: React.FC<FooterProps> = ({
     </footer>
   );
 };
+

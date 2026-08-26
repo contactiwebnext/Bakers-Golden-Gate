@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import {
-  HeartHandshake,
-  Sparkles,
+  Home,
+  Building2,
+  Truck,
+  ArrowLeftRight,
   Flame,
-  Compass,
-  FileCheck,
-  Heart,
+  ShieldCheck,
+  GraduationCap,
+  HeartHandshake,
+  Plane,
   ArrowRight,
   Phone,
   CheckCircle,
+  Calendar,
+  Layers,
 } from 'lucide-react';
 import { SERVICES_DATA, BUSINESS_INFO } from '../data/mockData';
 import { ServiceCategory } from '../types';
@@ -19,38 +24,79 @@ interface ServicesProps {
 }
 
 const iconMap: Record<string, React.FC<{ className?: string }>> = {
-  HeartHandshake,
-  Sparkles,
+  Home,
+  Building2,
+  Truck,
+  ArrowLeftRight,
   Flame,
-  Compass,
-  FileCheck,
-  ShieldHeart: Heart,
+  ShieldCheck,
+  GraduationCap,
+  HeartHandshake,
+  Plane,
 };
 
 export const Services: React.FC<ServicesProps> = ({ onOpenAppointment }) => {
   const [selectedService, setSelectedService] = useState<ServiceCategory | null>(null);
+  const [activeTab, setActiveTab] = useState<'all' | 'removals' | 'facility' | 'special'>('all');
+
+  const filterServices = () => {
+    if (activeTab === 'removals') {
+      return SERVICES_DATA.filter((s) => ['house-call-removal', 'hospital-nursing-home-removal'].includes(s.id));
+    }
+    if (activeTab === 'facility') {
+      return SERVICES_DATA.filter((s) => ['funeral-home-to-funeral-home', 'funeral-home-to-crematory', 'local-long-distance-transports'].includes(s.id));
+    }
+    if (activeTab === 'special') {
+      return SERVICES_DATA.filter((s) => ['coroner-medical-examiner-transport', 'body-donation-transports', 'private-transport-families', 'airport-transports'].includes(s.id));
+    }
+    return SERVICES_DATA;
+  };
+
+  const displayedServices = filterServices();
 
   return (
     <section id="services" className="py-20 sm:py-28 bg-[#0F1419] border-b border-[#FFFFFF10]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-xs font-semibold tracking-[0.25em] text-[#C5A059] uppercase block mb-2">
-            Mortuary & Memorial Offerings
+            Professional Offerings
           </span>
           <h2 className="font-serif-cormorant text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F8F5F0] tracking-tight">
-            Thoughtful Services Honoring Every Memory
+            Our 9 Mortuary Transportation Services
           </h2>
           <div className="w-16 h-0.5 bg-[#C5A059] mx-auto mt-4 mb-6"></div>
           <p className="text-base sm:text-lg text-[#F8F5F0]/75 leading-relaxed font-normal">
-            Every family’s journey is distinct. We offer a comprehensive suite of funeral, cremation, burial, and memorial options designed to provide peace of mind and heartfelt closure.
+            Baker’s Golden Gate Mortuary Transportation LLC provides comprehensive, respectful, and fully compliant transport solutions for funeral homes, medical facilities, coroners, and private families.
           </p>
         </div>
 
-        {/* 6-Card Service Grid */}
+        {/* Filter Navigation Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+          {[
+            { id: 'all', label: 'All 9 Services' },
+            { id: 'removals', label: 'Residential & Facility Removals' },
+            { id: 'facility', label: 'Inter-Facility & Crematory' },
+            { id: 'special', label: 'Coroner, Donation & Airport' },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={`px-4 py-2 text-xs uppercase tracking-wider font-semibold rounded-sm transition-all ${
+                activeTab === tab.id
+                  ? 'bg-[#C5A059] text-[#0F1419] shadow-md'
+                  : 'bg-[#141A21] text-[#F8F5F0]/70 hover:text-white hover:bg-[#1A222C] border border-[#FFFFFF10]'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* 9-Card Service Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {SERVICES_DATA.map((service) => {
-            const Icon = iconMap[service.iconName] || HeartHandshake;
+          {displayedServices.map((service, index) => {
+            const Icon = iconMap[service.iconName] || Truck;
             return (
               <div
                 key={service.id}
@@ -67,9 +113,12 @@ export const Services: React.FC<ServicesProps> = ({ onOpenAppointment }) => {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#141A21] via-transparent to-transparent"></div>
+                    <div className="absolute top-3 left-3 bg-[#0F1419]/80 backdrop-blur-xs px-2.5 py-1 rounded-xs border border-[#FFFFFF15] text-[11px] font-mono text-[#C5A059]">
+                      0{index + 1}
+                    </div>
                     <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
                       <span className="text-[10px] font-semibold tracking-[0.2em] text-[#C5A059] uppercase">
-                        Bakers Golden Gate
+                        WV 2455-5536
                       </span>
                     </div>
                   </div>
@@ -77,10 +126,10 @@ export const Services: React.FC<ServicesProps> = ({ onOpenAppointment }) => {
                   {/* Content Container */}
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-9 h-9 rounded-sm bg-[#1A222C] border border-[#C5A059]/40 flex items-center justify-center text-[#C5A059] shadow-sm">
+                      <div className="w-10 h-10 rounded-sm bg-[#1A222C] border border-[#C5A059]/40 flex items-center justify-center text-[#C5A059] shadow-sm shrink-0">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <h3 className="font-serif-cormorant text-2xl font-bold text-[#F8F5F0] leading-tight">
+                      <h3 className="font-serif-cormorant text-xl sm:text-2xl font-bold text-[#F8F5F0] leading-tight">
                         {service.title}
                       </h3>
                     </div>
@@ -107,7 +156,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenAppointment }) => {
                     onClick={() => setSelectedService(service)}
                     className="text-xs sm:text-sm font-semibold text-[#C5A059] hover:text-[#D4B16A] inline-flex items-center gap-1.5 transition-colors py-1"
                   >
-                    <span>View Details & What's Included</span>
+                    <span>View Specifications</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
 
@@ -115,7 +164,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenAppointment }) => {
                     onClick={() => onOpenAppointment(service.title)}
                     className="px-3 py-1.5 bg-transparent hover:bg-[#C5A059] border border-[#C5A059] text-[#C5A059] hover:text-[#0F1419] rounded-sm text-xs uppercase tracking-wider font-semibold transition-colors"
                   >
-                    Inquire
+                    Dispatch
                   </button>
                 </div>
               </div>
@@ -123,17 +172,17 @@ export const Services: React.FC<ServicesProps> = ({ onOpenAppointment }) => {
           })}
         </div>
 
-        {/* Personalized Consultation Callout */}
+        {/* Dedicated Dispatch / Inquiries Callout */}
         <div className="bg-[#141A21] text-white rounded-sm p-8 sm:p-10 border border-[#C5A059]/30 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center lg:text-left">
             <span className="text-xs font-semibold tracking-[0.25em] text-[#C5A059] uppercase">
-              No-Obligation Consultation
+              24/7 Professional Trade & Family Inquiries
             </span>
             <h3 className="font-serif-cormorant text-2xl sm:text-3xl font-bold text-[#F8F5F0]">
-              Have questions regarding funeral, burial, or cremation options?
+              Need Immediate Transport Dispatch or a Detailed Logistics Quote?
             </h3>
             <p className="text-sm text-[#F8F5F0]/75 max-w-2xl">
-              Our directors are always available to speak with you openly, explain choices transparently, and help your family make informed decisions without pressure.
+              Thomas Baker and our team are ready to coordinate promptly with funeral homes, crematories, medical examiners, and private families across WV and OH.
             </p>
           </div>
 
@@ -144,13 +193,14 @@ export const Services: React.FC<ServicesProps> = ({ onOpenAppointment }) => {
               className="px-5 py-3 rounded-sm bg-[#C5A059] hover:bg-[#D4B16A] text-[#0F1419] font-bold text-xs uppercase tracking-widest transition-colors inline-flex items-center gap-2 shadow-md"
             >
               <Phone className="w-4 h-4 text-[#0F1419]" />
-              <span>Call (740) 691-1488</span>
+              <span>Call 740 – 691 – 1488</span>
             </a>
             <button
               onClick={() => onOpenAppointment()}
-              className="px-5 py-3 rounded-sm bg-transparent hover:bg-[#C5A059]/10 text-[#C5A059] font-semibold text-xs uppercase tracking-widest border border-[#C5A059]/50 transition-colors"
+              className="px-5 py-3 rounded-sm bg-transparent hover:bg-[#C5A059]/10 text-[#C5A059] font-semibold text-xs uppercase tracking-widest border border-[#C5A059]/50 transition-colors inline-flex items-center gap-2"
             >
-              Schedule Consultation
+              <Calendar className="w-4 h-4" />
+              <span>Request Dispatch Form</span>
             </button>
           </div>
         </div>
@@ -165,3 +215,4 @@ export const Services: React.FC<ServicesProps> = ({ onOpenAppointment }) => {
     </section>
   );
 };
+

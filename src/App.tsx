@@ -8,7 +8,7 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Services } from './components/Services';
-import { Obituaries } from './components/Obituaries';
+import { PricingSection } from './components/PricingSection';
 import { GriefResources } from './components/GriefResources';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
@@ -53,8 +53,8 @@ export default function App() {
         {/* 3. Services Section & Detailed Modals */}
         <Services onOpenAppointment={handleOpenAppointment} />
 
-        {/* 4. Obituaries, Memorial Candles & Condolences */}
-        <Obituaries />
+        {/* 4. Official Price List & Interactive Mileage Calculator */}
+        <PricingSection onOpenAppointment={handleOpenAppointment} />
 
         {/* 5. Grief Resources, Pre-Planning Checklist & FAQs */}
         <GriefResources onOpenAppointment={handleOpenAppointment} />

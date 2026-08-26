@@ -16,7 +16,7 @@ export const AICareAssistant: React.FC = () => {
     {
       id: 'welcome',
       sender: 'bot',
-      text: `Hello, and welcome to Bakers Golden Gate in Parkersburg, WV. I am your Care & Guidance Assistant. Whether you have questions about what steps to take during a recent loss, funeral and cremation options, or etiquette, I am here to help. If you have an urgent need right now, please call our directors directly 24/7 at (740) 691-1488.`,
+      text: `Hello, and welcome to Bakers Golden Gate Mortuary Transportation, LLC in Parkersburg, WV (WV License 2455-5536). I am your 24/7 Logistics & Care Assistant. Whether you need immediate dispatch, transparent price list rates, coverage area details, or vehicle specifications, I am here to help. For immediate 24/7 dispatch, call Thomas Baker directly at 740 – 691 – 1488.`,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     },
   ]);
@@ -24,10 +24,10 @@ export const AICareAssistant: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const quickQuestions = [
-    'What should I do first if a death just occurred?',
-    'What is the difference between cremation and burial?',
-    'What documents should I bring to the mortuary?',
-    'How do I pre-plan arrangements for peace of mind?',
+    'What is your Price List and Primary Coverage Area (PCA)?',
+    'How do you calculate additional mileage outside the 40-mile PCA?',
+    'Do you accept payment from the WV Chief Medical Examiner’s Office?',
+    'What are your cot and casket length limits for transports?',
   ];
 
   useEffect(() => {

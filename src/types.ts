@@ -10,6 +10,16 @@ export interface ServiceCategory {
   whatsIncluded: string[];
 }
 
+export interface PriceItem {
+  id: string;
+  name: string;
+  priceDisplay: string;
+  priceValue: number;
+  category: 'base' | 'mileage' | 'addon' | 'specialized';
+  description?: string;
+  note?: string;
+}
+
 export interface Obituary {
   id: string;
   fullName: string;
